@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from app.routers import health
 
 app = FastAPI(
     title="FocuBoard API",
@@ -6,6 +7,4 @@ app = FastAPI(
     version="0.1.0"
 )
 
-@app.get("/")
-def root():
-    return{"message": "FocusBoard is alive"}
+app.include_router(health.router)
